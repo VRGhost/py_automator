@@ -1,0 +1,7 @@
+#!/bin/sh
+
+pushd `dirname $0` > /dev/null
+
+sh guessSettings.sh $*
+
+popd > /dev/null

@@ -1,0 +1,9 @@
+include macbook
+
+ignore = Name *.out
+ignore = Name *.log
+
+follow = Name *
+
+path = Documents
+path = Public

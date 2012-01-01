@@ -1,0 +1,7 @@
+This directory contains actual config for program to be executed.
+
+Configs itself are purely set of python functions to directly interact with
+application 'System' object.
+
+The main config file is named 'main.py' and its presence is required.
+You can add extra files, if you desire.

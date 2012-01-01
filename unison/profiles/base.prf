@@ -1,0 +1,22 @@
+# OS junk files
+ignore = Name .DS_Store
+ignore = Name .AppleDouble
+ignore = Name .TemporaryItems
+ignore = Name .VolumeIcon.icns
+ignore = Name Thumbs.db
+
+# Temporary files
+ignore = Name *.o
+ignore = Name *.pyc
+ignore = Name *.aux
+ignore = Name *.swp
+ignore = Name .*.swp
+ignore = Name *.tmp
+ignore = Name *~
+ignore = Name *.lock
+
+ignore = Name SyncServices
+ignore = Name unison.log
+
+perms = 0
+owner = false

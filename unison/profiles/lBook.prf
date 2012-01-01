@@ -1,0 +1,9 @@
+# Unison preferences file
+root = /Users/ilya/Books/lBook
+root = /Volumes/BOOKS
+
+ignore = Name .*
+
+follow = Name *
+perms = 0
+ignorecase = true

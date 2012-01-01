@@ -1,0 +1,9 @@
+include base
+
+
+backuplocation = central
+
+backupdir = ~/Backups/unison_backups/_Unknown
+backupsuffix = .$VERSION
+backup = Name *
+maxbackups = 100

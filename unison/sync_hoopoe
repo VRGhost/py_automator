@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DIR=$(dirname "$0")
+(
+	python "$DIR"/doSync.py hoopoe
+) && (
+	if [ -e ~/unison.log ] ; then
+		rm ~/unison.log
+	fi
+)

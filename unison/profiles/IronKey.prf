@@ -1,0 +1,18 @@
+include base
+
+ignore = Path Library
+ignore = Path Applications
+ignore = Path Music
+ignore = Path Movies
+ignore = Path Pictures
+ignore = Path Virtual Machines
+ignore = Path Devel/side
+ignore = Path .*
+ignore = Name .svn
+ignore = Name .hg*
+ignore = Name Steam*
+
+log = false
+
+path = ~/Documents
+path = /Volumes/IronKey USB/
