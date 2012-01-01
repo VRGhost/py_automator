@@ -117,23 +117,13 @@ class SyncExecutor(object):
             print _msg
 
 
-def run(opts, args):
+def run_with_args(argv):
+    import getopt
     from tendo import singleton
 
     _me = singleton.SingleInstance()
 
-    _syncer = SyncExecutor(
-        sys.argv[1],
-        args,
-        opts.has_key("-v"),
-        opts.get("--outCall")
-    )
-    _syncer.sync()
-
-if __name__ == "__main__":
-    import getopt
-
-    (_opts, _unparsed) = getopt.getopt(sys.argv[2:], ":v", [
+    (_opts, _unparsed) = getopt.getopt(argv[1:], ":v", [
         "outCall=", "arg=",
     ])
     assert not _unparsed
@@ -144,6 +134,17 @@ if __name__ == "__main__":
             (_name, _value) = _value.split("=", 1)
             _args[_name] = _value
     _opts = dict(_opts)
-    run(_opts, _args)
+    
+    _syncer = SyncExecutor(
+        argv[0],
+        _args,
+        _opts.has_key("-v"),
+        _opts.get("--outCall")
+    )
+    _syncer.sync()
+
+
+if __name__ == "__main__":
+    run_with_args(sys.argv[1:])
 
 # vim: set sts=4 sw=4 et :
