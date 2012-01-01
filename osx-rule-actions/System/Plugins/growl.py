@@ -9,7 +9,7 @@ class GrowlConfiguredIncompitelyError(ValueError):
 class Growl(PluginApp):
     """Growl plugin."""
 
-    controlledAppName = "GrowlHelperApp"
+    controlledAppName = "Growl"
 
     appName = icon = None
     notificationTypes = ()
@@ -43,7 +43,7 @@ class Growl(PluginApp):
             _tellCmd += " icon of application %(icon)s"
             _substArgs["icon"] = _wrap(self.icon)
         _appleScript = "\n".join((
-            'tell application "GrowlHelperApp"',
+            'tell application "%s"' % self.controlledAppName,
             _tellCmd % _substArgs,
             'end tell',
         ))
@@ -56,21 +56,22 @@ class Growl(PluginApp):
         _wrap = self.appleScript.escapeString
         _priority = min(max(priority, -2), 2)
         _appleScript = """
-            tell application "GrowlHelperApp"
+            tell application "%(targetApp)s"
                 notify \
                     with name %(type)s \
                     title %(title)s \
                     description %(body)s \
                     application name %(appName)s \
                     sticky %(sticky)s \
-                    priority %(priority)i
+                    priority %(priority)i 
             end tell
             """ % {
+                "targetApp": self.controlledAppName,
                 "appName": _wrap(self.appName),
                 "type": _wrap(type),
                 "title": _wrap(title),
                 "body": _wrap(text),
-                "sticky": "yes" if sticky else "no",
+                "sticky": "true" if sticky else "false",
                 "priority": _priority,
             }
         self.appleScript.execScript(_appleScript)

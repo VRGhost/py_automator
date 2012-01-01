@@ -118,6 +118,10 @@ class SyncExecutor(object):
 
 
 def run(opts, args):
+    from tendo import singleton
+
+    _me = singleton.SingleInstance()
+
     _syncer = SyncExecutor(
         sys.argv[1],
         args,
@@ -128,6 +132,7 @@ def run(opts, args):
 
 if __name__ == "__main__":
     import getopt
+
     (_opts, _unparsed) = getopt.getopt(sys.argv[2:], ":v", [
         "outCall=", "arg=",
     ])
@@ -139,19 +144,6 @@ if __name__ == "__main__":
             (_name, _value) = _value.split("=", 1)
             _args[_name] = _value
     _opts = dict(_opts)
-    _lockfile = os.path.join(os.path.dirname(__file__), "sync.lock")
-    if os.path.exists(_lockfile):
-        print "Lock file exists, exiting without action."
-	_rc = 1
-    else:
-        _rc = 2
-        file(_lockfile, "w").write(
-            "Locked at %s" % datetime.datetime.now().isoformat())
-        try:
-            run(_opts, _args)
-            _rc = 0
-        finally:
-            os.unlink(_lockfile)
-    exit(_rc)
+    run(_opts, _args)
 
 # vim: set sts=4 sw=4 et :

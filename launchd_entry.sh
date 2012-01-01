@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # This is file to be called by launchd
-PYTHONPATH=".;$PYTHONPATH" nice -n 20 python $(dirname "$0")/run.py --daemon_run
+nice -n 20 "$(dirname $0)"/entry.sh --daemon_run

@@ -1,12 +1,12 @@
 """Main config file."""
 
 def doUnison(system, *args):
-    _args = [r"/Users/ilya/Scripts/syncScripts/unison/doSync.py"]
+    _args = [r"./unison/doSync.py"]
     _args.extend(args)
     _rv = system.shell.execute("python", _args)
     _rc = _rv.wait()
     if _rc not in (0, ):
-        raise RuntimeError("Strange Unison return code %r" % _rc)
+        raise RuntimeError("Strange Unison return code %r (calling %r)" % (_rc, _args))
 
 
 def execute(system):
