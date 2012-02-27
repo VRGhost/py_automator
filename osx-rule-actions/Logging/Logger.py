@@ -37,7 +37,7 @@ class Logger(base.Base):
     def __init__(self, application):
         super(Logger, self).__init__(application)
 
-        self._rootLogger = logging.getLogger("root logger")
+        self._rootLogger = logging.getLogger("")
         self._rootLogger.setLevel(logging.DEBUG)
         self._installLogfile()
         self._addUserTexEditOutput()
